@@ -38,17 +38,16 @@ pub enum SwapInstruction {
     /// 5. `[writeable]` - Token metadata account
     /// 6. `[]` - Mint authority
     /// 7. `[]`. System program
-    /// 8. `[]`. Clock sysvar
-    /// 9. `[]`. Rent sysvar
-    /// 10. `[]`. Token program
-    /// 11. `[]`. Associated token program
-    /// 12. `[]`. Metaplex token metadata program
-    /// 13. `[signer, writeable]` - Fee payer
-    /// 14. `[signer]` - Swap authority
-    /// 15. `[]` - Admin account
-    /// 16. `[]` - Royalty wallet
-    /// 17 + 2n. `[writeable]` - Source token accounts
-    /// 18 + 2n. `[writeable]` - Source mint accounts
+    /// 8. `[]`. Rent sysvar
+    /// 9. `[]`. Token program
+    /// 10. `[]`. Associated token program
+    /// 11. `[]`. Metaplex token metadata program
+    /// 12. `[signer, writeable]` - Fee payer
+    /// 13. `[signer]` - Swap authority
+    /// 14. `[]` - Admin account
+    /// 15. `[]` - Royalty wallet
+    /// 16 + 2n. `[writeable]` - Source token accounts
+    /// 17 + 2n. `[writeable]` - Source mint accounts
     Swap(SwapArgs),
 }
 

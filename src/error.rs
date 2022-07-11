@@ -19,6 +19,9 @@ pub enum SwapError {
 
     #[error("Acoount is not properly derived")]
     PdaCheckFailed,
+
+    #[error("Provided account address doesnt match with one in config")]
+    AddressMismatch,
 }
 
 impl PrintProgramError for SwapError {
