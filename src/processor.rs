@@ -106,9 +106,9 @@ fn process_swap_tokens<'a>(
     let destination_token_account = next_account_info(iter)?;
     let token_metadata_account = next_account_info(iter)?;
     let mint_authority = next_account_info(iter)?;
-    let _system_program = next_account_info(iter)?;
+    let system_program = next_account_info(iter)?;
     let rent_sysvar = next_account_info(iter)?;
-    let _token_program = next_account_info(iter)?;
+    let token_program = next_account_info(iter)?;
     let _associated_token_program = next_account_info(iter)?;
     let _metaplex_program = next_account_info(iter)?;
     let fee_payer = next_account_info(iter)?;
@@ -207,7 +207,22 @@ fn process_swap_tokens<'a>(
     }
 
     swap_tokens::logic_burn(swap_source, &source_tokens)?;
-    
+    swap_tokens::logic_mint(
+        swap_config_account,
+        mint_account,
+        swap_destination,
+        destination_token_account,
+        token_metadata_account,
+        mint_authority,
+        rent_sysvar,
+        rent,
+        fee_payer,
+        admin_account,
+        royalty_wallet,
+        mint_authority_bump,
+        system_program,
+        token_program,
+    )?;
 
     Ok(())
 }
