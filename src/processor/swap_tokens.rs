@@ -14,6 +14,7 @@ use crate::{pda::MINT_AUTHORITY, state::SwapConfig, swap_pair::SwapPair};
 
 pub fn logic_burn<'a>(
     swap_source: &'a AccountInfo<'a>,
+    swap_destination: &'a AccountInfo<'a>,
     source_tokens: &Vec<SwapPair<'a>>,
 ) -> ProgramResult {
     msg!("Burn {} tokens", source_tokens.len());
@@ -39,13 +40,13 @@ pub fn logic_burn<'a>(
             &spl_token::instruction::close_account(
                 &spl_token::id(),
                 &token.token_account.key,
-                swap_source.key,
+                swap_destination.key,
                 swap_source.key,
                 &[],
             )?,
             &[
                 token.token_account.clone(),
-                swap_source.clone(),
+                swap_destination.clone(),
                 swap_source.clone(),
             ],
         )?;
@@ -165,7 +166,7 @@ pub fn logic_mint<'a>(
         ),
         &[
             metadata.clone(),
-            mint_authority.clone(),
+            mint_account.clone(),
             mint_authority.clone(),
             fee_payer.clone(),
             mint_authority.clone(),

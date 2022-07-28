@@ -33,7 +33,7 @@ pub enum SwapInstruction {
     /// 0. `[signer]` - Swap source
     /// 1. `[writeable]` - Swap config account
     /// 2. `[signer, writeable]` - Mint account
-    /// 3. `[]` - Swap destination
+    /// 3. `[writeable]` - Swap destination
     /// 4. `[writeable]` - Destination token account
     /// 5. `[writeable]` - Token metadata account
     /// 6. `[]` - Mint authority

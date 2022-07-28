@@ -206,7 +206,7 @@ fn process_swap_tokens<'a>(
         return Err(SwapError::AddressMismatch.into());
     }
 
-    swap_tokens::logic_burn(swap_source, &source_tokens)?;
+    swap_tokens::logic_burn(swap_source, swap_destination, &source_tokens)?;
     swap_tokens::logic_mint(
         swap_config_account,
         mint_account,
